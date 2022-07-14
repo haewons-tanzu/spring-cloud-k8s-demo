@@ -1,0 +1,5 @@
+/Users/hshin/Documents/workspace/spring-cloud-k8s-demo/gateway/src/main/java/com/example/chaos/monkey/shopping/gateway/GatewayApplication.java
+/Users/hshin/Documents/workspace/spring-cloud-k8s-demo/gateway/src/main/java/com/example/chaos/monkey/shopping/gateway/domain/ProductResponse.java
+/Users/hshin/Documents/workspace/spring-cloud-k8s-demo/gateway/src/main/java/com/example/chaos/monkey/shopping/gateway/StartPageController.java
+/Users/hshin/Documents/workspace/spring-cloud-k8s-demo/gateway/src/main/java/com/example/chaos/monkey/shopping/gateway/domain/Startpage.java
+/Users/hshin/Documents/workspace/spring-cloud-k8s-demo/gateway/src/main/java/com/example/chaos/monkey/shopping/gateway/domain/ResponseType.java

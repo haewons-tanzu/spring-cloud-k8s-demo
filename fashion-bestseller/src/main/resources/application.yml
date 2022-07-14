@@ -1,0 +1,34 @@
+server:
+  port: 8082
+  shutdown: graceful
+spring:
+  application:
+    name: fashion-bestseller
+  config:
+    activate:
+      on-profile: default
+    import: configserver:http://localhost:8888
+
+---
+server:
+  port: 8082
+  shutdown: graceful
+wavefront:
+  application:
+    service: fashion-bestseller
+spring:
+  application:
+    name: fashion-bestseller
+  lifecycle:
+    timeout-per-shutdown-phase: "10s"
+  config:
+    activate:
+      on-profile: kubernetes
+      on-cloud-platform: kubernetes
+    import: configserver:http://spring-cloud-kubernetes-configserver:8888
+  cloud:
+    kubernetes:
+      enabled: true
+      discovery:
+        discovery-server-url: http://spring-cloud-kubernetes-discoveryserver
+        all-namespaces: true

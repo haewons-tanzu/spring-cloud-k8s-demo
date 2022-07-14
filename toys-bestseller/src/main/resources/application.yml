@@ -1,0 +1,68 @@
+server:
+  port: 8081
+  shutdown: graceful
+
+spring:
+  application:
+    name: toys-bestseller
+  config:
+    activate:
+      on-profile: default
+    import: configserver:http://localhost:8888
+
+---
+server:
+  port: 8081
+  shutdown: graceful
+wavefront:
+  application:
+    service: toys-bestseller
+management:
+  endpoints:
+    health:
+      probes:
+        enabled: true
+    web:
+      exposure:
+        include: '*'
+  #server:
+  #  port: 8081
+spring:
+  application:
+    name: toys-bestseller
+  lifecycle:
+    timeout-per-shutdown-phase: "10s"
+  config:
+    activate:
+      on-profile: kubernetes
+      on-cloud-platform: kubernetes
+    import: configserver:http://spring-cloud-kubernetes-configserver:8888
+  cloud:
+    kubernetes:
+      configserver:
+        config-map-namespaces:
+      enabled: true
+      discovery:
+        discovery-server-url: http://spring-cloud-kubernetes-discoveryserver
+        all-namespaces: true
+        #enabled: false: 이미지 쓸거니까..
+      #config:
+      #  name: default-name
+      #  namespace: default-namespace
+      #  sources:
+          # Spring Cloud Kubernetes looks up a ConfigMap named c1 in namespace default-namespace
+      #    - name: c1
+          # Spring Cloud Kubernetes looks up a ConfigMap named default-name in whatever namespace n2
+      #    - namespace: n2
+          # Spring Cloud Kubernetes looks up a ConfigMap named c3 in namespace n3
+      #    - namespace: n3
+      #      name: c3
+# --spring.main.cloud-platform=kubernetes --spring.profiles.active=kubernetes
+
+---
+spring:
+  profiles:
+    group:
+      kubernetes-group:
+        - git
+        - kubernetes

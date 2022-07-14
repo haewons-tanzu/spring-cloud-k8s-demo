@@ -1,0 +1,39 @@
+apiVersion: v1
+data:
+  application.yaml: |-
+    spring:
+      config:
+        activate:
+          on-cloud-platform: "kubernetes"
+      cloud:
+        kubernetes:
+          enabled: "true"
+          discovery:
+            all-namespaces: "true"
+    wavefront:
+      application:
+        name: "spring-cloud-k8s-demo"
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: "*"
+      metrics:
+        export:
+          wavefront:
+            #uri: "https://vmware.wavefront.com"
+            #api-token: "d813c2d4-ae33-4f21-b2ce-c03922efc4c1"
+            uri: "https://sentosa.wavefront.com"
+            api-token: "e0e458cd-772c-44d3-86be-75359d96176b"
+            #uri: "https://try.wavefront.com"
+            #api-token: "efee3e2d-509f-4841-811c-c09613c0a048"
+    eureka:
+      client:
+        enabled: "false"
+            
+kind: ConfigMap
+metadata:
+  name: application
+  labels:
+    "spring.cloud.kubernetes.config": "true"
+
