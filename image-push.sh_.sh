@@ -1,7 +1,5 @@
 #!/bin/sh
 
-#docker login tanzukorea.azurecr.io --username tanzukorea -p oNvli21h+vbc1J=/UWfnUazHTjoDKE4=
-
 docker tag gateway:1.0-SNAPSHOT tanzukorea.azurecr.io/spring-cloud-k8s-demo/gateway:1.0-SNAPSHOT
 docker tag hot-deals:1.0-SNAPSHOT tanzukorea.azurecr.io/spring-cloud-k8s-demo/hot-deals:1.0-SNAPSHOT
 docker tag toys-bestseller:1.0-SNAPSHOT tanzukorea.azurecr.io/spring-cloud-k8s-demo/toys-bestseller:1.0-SNAPSHOT
@@ -12,8 +10,6 @@ docker push tanzukorea.azurecr.io/spring-cloud-k8s-demo/hot-deals:1.0-SNAPSHOT
 docker push tanzukorea.azurecr.io/spring-cloud-k8s-demo/toys-bestseller:1.0-SNAPSHOT
 docker push tanzukorea.azurecr.io/spring-cloud-k8s-demo/fashion-bestseller:1.0-SNAPSHOT
 
-
-#docker login --username AWS -p $(aws ecr get-login-password --region ap-southeast-1) 698489875176.dkr.ecr.ap-southeast-1.amazonaws.com
 
 #docker tag gateway:1.0-SNAPSHOT 698489875176.dkr.ecr.ap-southeast-1.amazonaws.com/gateway:1.0-SNAPSHOT
 #docker tag hot-deals:1.0-SNAPSHOT 698489875176.dkr.ecr.ap-southeast-1.amazonaws.com/hot-deals:1.0-SNAPSHOT
